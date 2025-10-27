@@ -1,22 +1,22 @@
-package Ejercicio13;
+package Ejercicio18;
 
 import java.util.Scanner;
 
-public class Ejercicio13 {
+public class Ejercicio18 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		Scanner scanner = new Scanner(System.in);
+		
 		System.out.println("Indica una palabra");
 		String palabra = scanner.nextLine();
-
+		
 		String[] arrayPalabra = palabra.split("");
-		for (int i = arrayPalabra.length-1 ; i >= 0; i--) {
-			System.out.print(arrayPalabra[i]);			
+		
+		for (String valor : arrayPalabra) {
+			System.out.print(valor + " ");
 		}
 		
-
 		scanner.close();
 	}
 
