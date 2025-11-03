@@ -13,16 +13,13 @@ public class Ejercicio12 {
 		String url = scanner.nextLine();
 
 		String[] arrayCadenasBarras = url.split("//");
-		String[] arrayCadenasPuntos = url.split(".");
+		String[] arrayCadenasPuntos = arrayCadenasBarras[1].split("\\.");
 
-		for (int i = 0; i < arrayCadenasBarras.length; i++) {
-			System.out.println(arrayCadenasBarras[i]);
+		System.out.println(arrayCadenasBarras[0] + "//");
+
+		for (String string : arrayCadenasPuntos) {
+			System.out.println(string);
 		}
-		for (int i = 0; i < arrayCadenasPuntos.length; i++) {
-			System.out.print(arrayCadenasPuntos[i]);
-
-		}
-
 		scanner.close();
 	}
 

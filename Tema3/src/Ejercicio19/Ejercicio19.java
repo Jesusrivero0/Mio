@@ -19,7 +19,7 @@ public class Ejercicio19 {
 
 			String[] arrayUsuario = new String[palabraElegida.length()];
 			String ale = palabraElegida.substring(0, 1);
-			System.out.print(ale );
+			System.out.print(ale);
 			for (int i = 0; i < arrayPalabra.length; i++) {
 
 				System.out.print(" _ ");
@@ -32,10 +32,7 @@ public class Ejercicio19 {
 				if (palabraElegida.contains(letra)) {
 					arrayUsuario[i] = letra;
 					System.out.println("correcto");
-					// if (arrayUsuario.equals(arrayPalabra)) {
-					// System.out.println("Correcto la palabra correcta era " +
-					// arrayPalabra[aleatorio]);
-					// }
+					System.out.println(arrayUsuario[i]);
 
 				}
 
