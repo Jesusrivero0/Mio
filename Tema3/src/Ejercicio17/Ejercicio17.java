@@ -7,7 +7,7 @@ public class Ejercicio17 {
 		Double[] arrayDecimal = new Double[] {5.4, 3.1, 9.0, 4.7};
 		Double suma = 0.0;
 		for (Double valor : arrayDecimal) {
-			System.out.print(valor + ", ");
+			System.out.print(valor + " ");
 		}
 		System.out.println();
 		for (Double valor : arrayDecimal) {
