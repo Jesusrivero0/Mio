@@ -10,35 +10,39 @@ public class Ejercicio10Repaso {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Cuantos alumnos hay en clase");
 		Integer numero = scanner.nextInt();
-		scanner.nextLine();
 
-		Double total = 0.0;
-		Double media = 0.0;
-		Double[] array = new Double[3];
-		do {
-		for (int i = 1; i < numero; i++) {
-			System.out.println("Cual es el nombre del alumnos " + i);
-			String nombre = scanner.nextLine();
-			
+		Integer primero = 0;
+		Integer total = 0;
+		String nombre = "";
+		String[] arraynom = new String[numero];
+		Integer nota1 = 0;
+		Integer nota2 = 0;
+		Integer nota3 = 0;
+
+		for (int i = 0; i < numero; i++) {
 			scanner.nextLine();
-			System.out.println("Cual es la nota de " + nombre + " del examen " + i);
-			array[0] = scanner.nextDouble();
-			
-			System.out.println("Cual es la nota de " + nombre + " del examen " + i);
-			array[1] = scanner.nextDouble();
-			
-			System.out.println("Cual es la nota de " + nombre + " del examen " + i);
-			array[2] = scanner.nextDouble();
-			total = array[0] + array[1] + array[2];
-			
-			media = total / 3;  
+			System.out.println("Cual es el nombre del alumnos " + i);
+			arraynom[i] = scanner.nextLine();
+
+			System.out.println("Cual es la nota de " + arraynom[i] + " del examen 1");
+			nota1 = scanner.nextInt();
+
+			System.out.println("Cual es la nota de " + arraynom[i] + " del examen 2");
+			nota2 = scanner.nextInt();
+
+			System.out.println("Cual es la nota de " + arraynom[i] + " del examen 3");
+			nota3 = scanner.nextInt();
+
+			primero = nota1 + nota2 + nota3;
+			total = total + primero;
 		}
-		}while (numero>0);
+
+		System.out.println(total);
 		System.out.println("Listado de notas: ");
-		System.out.println("    Alumno: " + media);
-		
-		System.out.println("Media de los alumnos: ");
-		
+		for (int i = 0; i < numero; i++) {
+			System.out.println("    Alumno: " + arraynom[i] + ((nota1 + nota2 + nota3) / 3));
+		}
+		System.out.println("Media de los alumnos: " + (total / (numero * 3)));
 
 		scanner.close();
 
