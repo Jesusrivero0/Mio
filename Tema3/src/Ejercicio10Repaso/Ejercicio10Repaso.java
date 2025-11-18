@@ -13,7 +13,6 @@ public class Ejercicio10Repaso {
 
 		Integer primero = 0;
 		Integer total = 0;
-		String nombre = "";
 		String[] arraynom = new String[numero];
 		Integer nota1 = 0;
 		Integer nota2 = 0;
@@ -37,10 +36,9 @@ public class Ejercicio10Repaso {
 			total = total + primero;
 		}
 
-		System.out.println(total);
 		System.out.println("Listado de notas: ");
 		for (int i = 0; i < numero; i++) {
-			System.out.println("    Alumno: " + arraynom[i] + ((nota1 + nota2 + nota3) / 3));
+			System.out.println("   Alumno: " + arraynom[i] + (primero / 3));
 		}
 		System.out.println("Media de los alumnos: " + (total / (numero * 3)));
 

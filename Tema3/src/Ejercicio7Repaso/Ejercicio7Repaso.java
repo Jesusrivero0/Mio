@@ -22,7 +22,7 @@ public class Ejercicio7Repaso {
 			String[] aux = arrayTelegrama[i].split(" ");
 			hola = hola + (aux.length * PRECIO);
 		}
-
+		
 		System.out.println("El precio total es de " + hola);
 		scanner.close();
 

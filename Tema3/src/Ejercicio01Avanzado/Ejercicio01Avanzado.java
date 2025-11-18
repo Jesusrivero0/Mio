@@ -20,15 +20,12 @@ public class Ejercicio01Avanzado {
 		for (int i = 1; i <= tiradas; i++) {
 			Integer aleatorio1 = random.nextInt(0,7);
 			Integer aleatorio2 = random.nextInt(0,7);
-			System.out.println("La tirada "  + i + " es: " + (aleatorio1 + aleatorio2));
-			
+			System.out.println("La tirada "  + i + " es: " + (aleatorio1 + aleatorio2));	
 			if(aleatorio1+aleatorio2 == aleatorio1+aleatorio2) {
 				array[i] = (aleatorio1+aleatorio2)/100;
 				System.out.println(array[i]);
 			}
-			
 		}
-		
 		scanner.close();
 	}
 
