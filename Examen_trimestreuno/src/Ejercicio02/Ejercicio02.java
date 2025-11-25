@@ -13,7 +13,7 @@ public class Ejercicio02 {
 		do {
 			System.out.println("Indica un numero mayor a 10000");
 			num = scanner.nextLine();
-		} while (num.compareTo("10000") < 0);
+		} while (Integer.parseInt(num) < 1000);
 
 		String[] arrayNum = new String[num.length()];
 

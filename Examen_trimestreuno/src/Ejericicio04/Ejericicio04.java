@@ -11,14 +11,14 @@ public class Ejericicio04 {
 		
 		System.out.println("Cuantos ingredientes debe llevar la receta");
 		Integer cad = scanner.nextInt();
-		
+		scanner.nextLine();
 		
 		Double precio = 0.0;
 		Double kg = 0.0;
 		Double total = 0.0;
 		
 		for (int i = 1; i <= cad; i++) {
-			scanner.nextLine();
+			
 			System.out.println("Cual es el ingrediente " + i);
 			String  ing1 = scanner.nextLine();
 
