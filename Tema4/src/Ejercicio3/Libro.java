@@ -18,25 +18,22 @@ public class Libro {
 		this.paginasLeidas = this.paginasLeidas + paginasLeidas;
 		if (this.paginasLeidas > this.totalPaginas) {
 			return this.paginasLeidas = this.totalPaginas;
-		}else {
+		} else {
 			return this.paginasLeidas;
 		}
 	}
-	
+
 	public Integer retroceder(Integer paginas) {
-		if(this.paginasLeidas >= 0) {
+		if (paginas >= 0) {
 			return this.paginasLeidas;
-		}
-		else {
+		} else {
 			return 0;
 		}
 	}
-	
+
 	public void reiniciar() {
 		this.paginasLeidas = 0;
 	}
-	
-	
 
 	public String getTitulo() {
 		return titulo;
@@ -53,5 +50,11 @@ public class Libro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Libro titulo = " + titulo + ", autor = " + autor + ", paginasLeidas = " + paginasLeidas
+				+ ", totalPaginas = " + totalPaginas;
+	}
+
 }
