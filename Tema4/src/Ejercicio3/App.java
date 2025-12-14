@@ -30,29 +30,24 @@ public class App {
 			if (respuesta.equalsIgnoreCase("He avanzado")) {
 				System.out.println("Cual es la cantidad de paginas que llevas leidas");
 				paginasLeidas = scanner.nextInt();
+				if (paginasLeidas.equals(totalPaginas)) {
+					break;
+				}
 				libro.leer(paginasLeidas);
 				System.out.println(libro);
-				/*scanner.nextLine();
-				System.out.println("Quieres seguir (S/N)");
-				String pal = scanner.nextLine();
-				if (pal.equalsIgnoreCase("S")) {
-					i = 0;
-				} else {
-					break;
-				}*/
+				/*
+				 * scanner.nextLine(); System.out.println("Quieres seguir (S/N)"); String pal =
+				 * scanner.nextLine(); if (pal.equalsIgnoreCase("S")) { i = 0; } else { break; }
+				 */
 			} else if (respuesta.equalsIgnoreCase("He retrocedido")) {
 				System.out.println("Cual es la cantidad de paginas que llevas leidas");
 				paginasLeidas = scanner.nextInt();
 				libro.retroceder(paginasLeidas);
 				System.out.println(libro);
-				/*scanner.nextLine();
-				System.out.println("Quieres seguir (S/N)");
-				String pal = scanner.nextLine();
-				if (pal.equalsIgnoreCase("N")) {
-					i = 0;
-				} else {
-					break;
-				}*/
+				/*
+				 * scanner.nextLine(); System.out.println("Quieres seguir (S/N)"); String pal =
+				 * scanner.nextLine(); if (pal.equalsIgnoreCase("N")) { i = 0; } else { break; }
+				 */
 			} else if (respuesta.equalsIgnoreCase("He avandonado")) {
 				System.out.println(libro);
 				break;
@@ -60,6 +55,7 @@ public class App {
 				break;
 			}
 		}
+		System.out.println("Enhorabuena has acabado de leer el libro " + titulo);
 
 		scanner.close();
 

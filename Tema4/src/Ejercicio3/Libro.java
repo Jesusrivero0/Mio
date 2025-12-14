@@ -25,10 +25,16 @@ public class Libro {
 
 	public Integer retroceder(Integer paginas) {
 		if (paginas >= 0) {
-			return this.paginasLeidas;
+			this.paginasLeidas = paginas;
+			return paginas;
+		} else if (paginas < 0) {
+			System.out.println("debe ser mayor de 0");
+			return 0;
 		} else {
 			return 0;
 		}
+
+		
 	}
 
 	public void reiniciar() {
