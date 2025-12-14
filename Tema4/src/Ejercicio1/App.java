@@ -7,7 +7,6 @@ public class App {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Calculadora calc1 = new Calculadora();
-		Double total = 0.0;
 		Integer num;
 		do {
 			System.out.println("Que quieres hacer??");
@@ -41,5 +40,6 @@ public class App {
 				System.out.println(calc1.getValor());
 			}
 		} while (num != 0);
+		sc.close();
 	}
 }
