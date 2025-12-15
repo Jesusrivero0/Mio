@@ -34,11 +34,15 @@ public class Libro {
 			return 0;
 		}
 
-		
 	}
 
 	public void reiniciar() {
 		this.paginasLeidas = 0;
+	}
+
+	public Integer progreso() {
+		Integer porcentaje = (this.paginasLeidas * 100) / this.totalPaginas;
+		return porcentaje;
 	}
 
 	public String getTitulo() {

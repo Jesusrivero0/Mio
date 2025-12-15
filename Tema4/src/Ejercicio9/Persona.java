@@ -1,4 +1,4 @@
-package Ejercicio4;
+package Ejercicio9;
 
 public class Persona extends Alumno {
 
