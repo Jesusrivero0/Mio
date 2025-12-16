@@ -39,13 +39,17 @@ public class Alumno extends Persona {
 	public void aprobar() {
 		this.nota = 5;
 	}
-	/*
+
 	public Boolean validarDni() {
-		if(!this.dni.equals(null)) {
-			
+		if (this.dni.equals(null) || this.dni.contains(" ")) {
+			return false;
+		} else if (dni.length() < 9) {
+			return false;
+		} else {
+			return true;
 		}
 	}
-*/
+
 	@Override
 	public String toString() {
 		return "Alumno dni = " + dni + ", nombre = " + getNombre() + ", edad = " + getEdad() + ", nota = " + nota;
