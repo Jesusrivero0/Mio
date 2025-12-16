@@ -1,12 +1,10 @@
-package Ejercicio9;
+package Ejercicio11;
 
 import java.util.Objects;
 
-public class Alumno {
+public class Alumno extends Persona {
 
 	private String dni;
-	private String nombre;
-	private Integer edad;
 	private Integer nota;
 	private Curso curso;
 
@@ -30,22 +28,6 @@ public class Alumno {
 		this.dni = dni;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Integer getEdad() {
-		return edad;
-	}
-
-	public void setEdad(Integer edad) {
-		this.edad = edad;
-	}
-
 	public Integer getNota() {
 		return nota;
 	}
@@ -60,7 +42,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return "Alumno dni = " + dni + ", nombre = " + nombre + ", edad = " + edad + ", nota = " + nota;
+		return "Alumno dni = " + dni + ", nombre = " + getNombre() + ", edad = " + getEdad() + ", nota = " + nota;
 	}
 
 	@Override
@@ -79,7 +61,5 @@ public class Alumno {
 		Alumno other = (Alumno) obj;
 		return Objects.equals(dni, other.dni);
 	}
-	
-	
 
 }
