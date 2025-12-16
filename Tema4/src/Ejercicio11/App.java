@@ -41,7 +41,9 @@ public class App {
 			arrayAlumnos[i] = alumno;
 
 		}
-		if (alumno.equals(alumno)) {
+		if (arrayAlumnos[0].equals(arrayAlumnos[1])) {
+			System.out.println("Error");
+		} else if (arrayAlumnos[1].equals(arrayAlumnos[2])) {
 			System.out.println("Error");
 		} else {
 			for (Alumno alumno1 : arrayAlumnos) {

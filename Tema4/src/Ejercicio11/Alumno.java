@@ -8,6 +8,10 @@ public class Alumno extends Persona {
 	private Integer nota;
 	private Curso curso;
 
+	public Alumno(String dni) {
+		this.dni = dni.toUpperCase();
+	}
+
 	public Curso getCurso() {
 		return curso;
 	}
@@ -16,16 +20,12 @@ public class Alumno extends Persona {
 		this.curso = curso;
 	}
 
-	public Alumno(String dni) {
-
-	}
-
 	public String getDni() {
 		return dni;
 	}
 
 	public void setDni(String dni) {
-		this.dni = dni;
+		this.dni = dni.toUpperCase();
 	}
 
 	public Integer getNota() {
@@ -39,7 +39,13 @@ public class Alumno extends Persona {
 	public void aprobar() {
 		this.nota = 5;
 	}
-
+	/*
+	public Boolean validarDni() {
+		if(!this.dni.equals(null)) {
+			
+		}
+	}
+*/
 	@Override
 	public String toString() {
 		return "Alumno dni = " + dni + ", nombre = " + getNombre() + ", edad = " + getEdad() + ", nota = " + nota;
