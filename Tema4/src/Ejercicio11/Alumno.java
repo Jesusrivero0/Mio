@@ -52,7 +52,8 @@ public class Alumno extends Persona {
 
 	@Override
 	public String toString() {
-		return "Alumno dni = " + dni + ", nombre = " + getNombre() + ", edad = " + getEdad() + ", nota = " + nota;
+		return "Alumno dni = " + dni + ", nombre = " + getNombre() + ", edad = " + getEdad() + ", nota = " + nota
+				+ ", curso" + curso;
 	}
 
 	@Override
