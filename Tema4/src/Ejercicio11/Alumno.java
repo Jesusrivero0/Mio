@@ -1,6 +1,8 @@
 package Ejercicio11;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Alumno extends Persona {
 
@@ -41,13 +43,32 @@ public class Alumno extends Persona {
 	}
 
 	public Boolean validarDni() {
-		if (this.dni.equals(null) || this.dni.contains(" ")) {
-			return false;
-		} else if (dni.length() < 9) {
-			return false;
+		String ejemploDni = this.dni;
+		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+		Matcher match = patron.matcher(ejemploDni);
+		if (match.matches()) {
+			System.out.println("El dni es correcto");
+			return true;
 		} else {
+			System.out.println("El dni es incorrecto");
+			return false;
+		}
+	}
+
+	public Boolean validar() {
+		if (!validarDni()) {
+			return false;
+		}
+		if (this.curso == null) {
+			return false;
+		}
+		if (this.getNombre() == null || this.getNombre().length() < 10) {
+			return false;
+		}
+		if (this.getEdad() == null || this.getEdad() <= 12 || this.getEdad() >= 65) {
 			return true;
 		}
+		return true;
 	}
 
 	@Override

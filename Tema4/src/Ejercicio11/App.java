@@ -9,12 +9,14 @@ public class App {
 
 		Alumno[] arrayAlumnos = new Alumno[3];
 		Alumno alumno;
-
+		System.out.println("Cuantos alumnos tenemos");
+		Integer cantAlumnos = scanner.nextInt();
+		scanner.nextLine();
 		for (int i = 0; i < arrayAlumnos.length; i++) {
+
 			System.out.println("Cual es el dni del alumno");
 			String dniAlumno = scanner.nextLine();
 			alumno = new Alumno(dniAlumno);
-			
 
 			if (alumno.validarDni()) {
 				System.out.println("Cual es nombre del alumno");
@@ -31,7 +33,7 @@ public class App {
 				alumno.aprobar();
 				scanner.nextLine();
 
-				Curso curso = new Curso();
+				Curso curso = new Curso(cantAlumnos);
 				curso.setIdentificador(1);
 				curso.setDescripcion("DAM-DAW");
 				alumno.setCurso(curso);
@@ -43,6 +45,15 @@ public class App {
 
 			}
 		}
+
+		for (Alumno alumno1 : arrayAlumnos) {
+			if (alumno1.validar()) {
+				System.out.println("Algun alumno falló");
+			} else {
+				System.out.println("Esta todo bien");
+			}
+		}
+
 		if (arrayAlumnos[0].equals(arrayAlumnos[1])) {
 			System.out.println("Error");
 		} else if (arrayAlumnos[1].equals(arrayAlumnos[2])) {
@@ -52,8 +63,6 @@ public class App {
 				System.out.println(alumno1);
 			}
 		}
-		// System.out.println(alumno.toString());
-
 		scanner.close();
 	}
 
