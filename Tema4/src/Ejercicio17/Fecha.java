@@ -33,14 +33,55 @@ public class Fecha {
 	public Boolean validarBisiesto() {
 		return (años % 4 == 0 && años % 100 != 0) || (años % 400 == 0);
 	}
-	
-	public void validarFecha() {
-		if (validarBisiesto()) {
-			System.out.println("Es bisiesto");
-		} 	
-		if (this.dia <= 31 && this.mes <= 12 && this.años >= 0) {
-			System.out.println("Esta fecha es correcta");
+
+	public Boolean validarFecha() {
+		Integer[] arrayFecha = new Integer[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+		if (this.mes < 1 || this.mes > 12) {
+			return false;
 		}
+		if (dia < 1) {
+			return false;
+		}
+		if (this.mes == 2 && validarBisiesto()) {
+			return dia <= 29;
+		}
+
+		return dia <= arrayFecha[this.mes - 1];
+
 	}
 
+	public void diaSiguiente() {
+		Integer[] arrayFecha = new Integer[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		if (this.mes == 2 && validarBisiesto()) {
+			arrayFecha[1] = 29;
+		}
+		dia++;
+		if (dia < 1) {
+			mes++;
+		}
+		if (mes < 1) {
+			mes = 12;
+			this.años++;
+		}
+		dia = arrayFecha[mes - 1];
+
+	}
+
+	public void diaAnterior() {
+		Integer[] arrayFecha = new Integer[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		if (this.mes == 2 && validarBisiesto()) {
+			arrayFecha[1] = 29;
+		}
+		dia--;
+		if (dia < 1) {
+			mes--;
+		}
+		if (mes < 1) {
+			mes = 12;
+			this.años--;
+		}
+		dia = arrayFecha[mes - 1];
+
+	}
 }
