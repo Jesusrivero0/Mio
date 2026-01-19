@@ -42,7 +42,7 @@ public class Semaforo {
 		if (this.color.equals(AMARILLO) && this.parpadeando == true) {
 			this.parpadeando = false;
 		}
-		if (this.color.equals(AMARILLO) && this.parpadeando == false) {
+		if (this.color.equals(AMARILLO)) {
 			this.color = ROJO;
 		}
 	}

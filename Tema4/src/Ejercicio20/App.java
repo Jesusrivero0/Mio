@@ -18,15 +18,22 @@ public class App {
 			listaCadenas.add(cad);
 		}
 		System.out.println(listaCadenas.toString());
-		
+
 		for (int i = 0; i < 5; i++) {
-			//listaCadenas = listaCadenas.get(i).toUpperCase();
+			System.out.println(listaCadenas.get(i).toUpperCase());
 		}
-		
-		for (int i = 0; i < 5; i++) {
-			System.out.println(listaCadenas.get(i));
+
+		if (listaCadenas.isEmpty()) {
+			System.out.println("Esta vacia");
 		}
-		
+
+		for (int i = 0; i < listaCadenas.size(); i++) {
+			if (listaCadenas.get(i).length() < 6) {
+				listaCadenas.remove(i);
+			}
+
+		}
+		System.out.println(listaCadenas.toString());
 		scanner.close();
 	}
 
