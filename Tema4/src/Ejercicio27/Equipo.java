@@ -10,7 +10,7 @@ public class Equipo {
 	private List<Jugador> listaJugador;
 
 	public Equipo(String nombre) {
-
+		this.nombre=nombre;
 	}
 
 	public String getNombre() {
@@ -54,9 +54,10 @@ public class Equipo {
 		return Objects.equals(nombre, other.nombre);
 	}
 
+	
 	@Override
 	public String toString() {
-		return nombre + " - Capitan: " + capitan + " - Jugadores:[" + listaJugador.size() + " " + listaJugador + "]";
+		return nombre + " - Capitan: " + capitan.getNombre() + " - Jugadores:[" +   listaJugador.toString() + "]";
 	}
 
 }
