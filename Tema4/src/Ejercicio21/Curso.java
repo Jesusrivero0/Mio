@@ -13,6 +13,10 @@ public class Curso {
 		alumnos = new ArrayList<>();
 	}
 
+	public Curso() {
+		alumnos = new ArrayList<>();
+	}
+	
 	public List<Alumno> getAlumnos() {
 		return alumnos;
 	}
@@ -20,7 +24,7 @@ public class Curso {
 	public void addAlumno(Alumno alumno) {
 		for (int i = 0; i < alumnos.size(); i++) {
 			if (alumnos.get(i) == null) {
-				alumnos.add(alumno);
+				alumnos.set(i,alumno);
 				return;
 			}
 		}

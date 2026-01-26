@@ -9,12 +9,16 @@ public class App {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
-		List <Alumno> arrayAlumnos = new ArrayList<>();
+		Curso curso = new Curso();
+		curso.setIdentificador(1);
+		curso.setDescripcion("DAM-DAW");
+		
+		List<Alumno> arrayAlumnos = new ArrayList<>();
 		Alumno alumno;
 		System.out.println("Cuantos alumnos tenemos");
 		Integer cantAlumnos = scanner.nextInt();
 		scanner.nextLine();
-		for (int i = 0; i < arrayAlumnos.size(); i++) {
+		for (int i = 0; i < cantAlumnos; i++) {
 
 			System.out.println("Cual es el dni del alumno");
 			String dniAlumno = scanner.nextLine();
@@ -35,12 +39,10 @@ public class App {
 				alumno.aprobar();
 				scanner.nextLine();
 
-				Curso curso = new Curso(cantAlumnos);
-				curso.setIdentificador(1);
-				curso.setDescripcion("DAM-DAW");
-				alumno.setCurso(curso);
+				
+				
 
-				arrayAlumnos.add(alumno);
+				arrayAlumnos.set(i, alumno);
 			} else {
 				System.out.println("Error el dni no es valido");
 				i = 0;
