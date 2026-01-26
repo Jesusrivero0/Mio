@@ -1,4 +1,4 @@
-package Ejercicio27;
+package Ejercicio28;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +60,8 @@ public class App {
 
 		Partido p1 = new Partido();
 		p1.setResultado(r1);
+		p1.setEquipoLocal(equipo1);
+		p1.setEquipoVisitante(equipo2);
 		System.out.println(p1.toString());
 
 		System.out.println("Cuantos goles metio el equipo local");
@@ -82,8 +84,11 @@ public class App {
 		equipo1.setCapitan(listaJugador.get(listaJugador.size() - 1));
 		System.out.println(equipo1.toString());
 
+		Equipo.setCompeticion("Liga Nacional");
+		System.out.println(equipo2.getCompeticion());
 		
-		
+		Equipo.setCompeticion("Copa Internacional");
+		System.out.println(equipo1.getCompeticion());
 		scanner.close();
 	}
 
