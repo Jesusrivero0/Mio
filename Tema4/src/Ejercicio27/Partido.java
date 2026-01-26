@@ -7,7 +7,7 @@ public class Partido {
 	private Resultado resultado;
 
 	public Partido() {
-
+		
 	}
 
 	public Equipo getEquipoLocal() {
