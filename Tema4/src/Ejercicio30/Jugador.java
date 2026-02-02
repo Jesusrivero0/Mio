@@ -7,11 +7,11 @@ public class Jugador {
 
 	
 	private String nombre;
-	private List<Equipo> equipo;
+	private Equipo equipo;
 	
 	
 	public Jugador() {
-		equipo = new ArrayList<>();
+		
 	}
 
 
@@ -25,12 +25,12 @@ public class Jugador {
 	}
 
 
-	public List<Equipo> getEquipo() {
+	public Equipo getEquipo() {
 		return equipo;
 	}
 
 
-	public void setEquipo(List<Equipo> equipo) {
+	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
 
