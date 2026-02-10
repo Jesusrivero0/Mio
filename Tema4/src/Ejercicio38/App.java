@@ -1,15 +1,13 @@
-package Ejercicio33;
+package Ejercicio38;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
 
 	public static void main(String[] args) {
-		
-		
-		List<Articulo> listaArticulo = new ArrayList<>();
-		
+				
 		Cliente cliente = new Cliente("12345678D", "Blas De Los Montes");
 		
 		Carrito carrito = new Carrito(cliente);
@@ -19,7 +17,7 @@ public class App {
 		ropa.setColor("azul");
 		ropa.setDescripcion("Poncho");
 		ropa.setTalla("xl");
-		ropa.setPrecio(20);
+		ropa.setPrecio(new BigDecimal(20));
 		
 		carrito.addArticulo(ropa);
 		carrito.addArticulo(ropa);
@@ -29,7 +27,7 @@ public class App {
 		Libro libro = new Libro();
 		libro.setAutor("Nietzsche");
 		libro.setDescripcion("Asi hablo Zaratustra");
-		libro.setPrecio(15);
+		libro.setPrecio(new BigDecimal (15));
 			
 		carrito.addArticulo(libro);
 		

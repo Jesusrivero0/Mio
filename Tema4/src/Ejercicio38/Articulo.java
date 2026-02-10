@@ -1,20 +1,22 @@
-package Ejercicio33;
+package Ejercicio38;
+
+import java.math.BigDecimal;
 
 public class Articulo {
 
 	private String descripcion;
-	private Integer precio;
+	private BigDecimal precio;
 	
 	public String getDescripcion() {
 		return descripcion;
 	}
-	public Integer getPrecio() {
+	public BigDecimal getPrecio() {
 		return precio;
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public void setPrecio(Integer precio) {
+	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
 	

@@ -1,5 +1,6 @@
-package Ejercicio33;
+package Ejercicio38;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -55,19 +56,20 @@ public class Carrito {
 		return this.listaArticulo.size();
 	}
 
-	public Integer getTotal() {
-		Integer total = 0;
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
 		for (Articulo articulo : listaArticulo) {
-			total += articulo.getPrecio();
+			total.add(articulo.getPrecio());
 		}
 		return total;
 	}
 
-	public Integer getPrecioMedia() {
+	public BigDecimal getPrecioMedia() {
 		if (getCantidad() == 0) {
-			return 0;
+			return BigDecimal.ZERO;
 		}
-		return getTotal() / getCantidad();
+		BigDecimal i = new BigDecimal(getCantidad());
+		return getTotal().divide(i);
 	}
 
 	public void addArticulo(Articulo articulo) {
