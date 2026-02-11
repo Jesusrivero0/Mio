@@ -11,37 +11,38 @@ public class Hucha {
 		this.importe = BigDecimal.ZERO.setScale(2);
 	}
 
-	BigDecimal total = BigDecimal.ZERO;
-
 	public BigDecimal meterDinero(BigDecimal importe) {
-		total = this.importe.add(importe);
-		return total;
+		this.importe = this.importe.add(importe);
+		return importe;
 	}
 
-	public BigDecimal sacarDinero(BigDecimal importe) {
-		if (importe.compareTo(total) < 0) {
-			total = this.importe.subtract(importe);
+	public BigDecimal sacarDinero(BigDecimal metido) {//200
+		//150
+		if (this.importe.compareTo(metido) > 0) {
+			this.importe = this.importe.subtract(metido);
+
+		} else if (this.importe.compareTo(metido) < 0) {
+			this.importe = BigDecimal.ZERO;
+			return this.importe;
 		}
-		return total;
+		return importe;
+
 	}
-	
+
 	public BigDecimal contarDinero() {
-		return total;
+		return importe;
 	}
-	
+
 	public BigDecimal romperHucha() {
-		total = BigDecimal.ZERO;
+		BigDecimal total = importe;
+		importe = BigDecimal.ZERO;
 		return total;
 	}
 
 	@Override
 	public String toString() {
-		DecimalFormat formato = new DecimalFormat("#,###.00");
-		return "Hucha importe=" + formato.format(importe);
+		DecimalFormat formato = new DecimalFormat("#,##0.00");
+		return "Hucha importe = " + formato.format(importe);
 	}
-	
-	
-	
-	
-	
+
 }
