@@ -29,13 +29,7 @@ public class Diccionario {
 	}
 
 	public void borrarDiccionario() {
-
-		List<String> listaCadenas = new ArrayList<>();
-
-		Iterator<String> iterador = listaCadenas.iterator();
-		while (iterador.hasNext()) {
-			listaCadenas.clear();
-		}
+		mapa.clear();
 	}
 
 	public void imprimirPalabras(String palabra) {
