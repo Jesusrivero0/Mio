@@ -96,14 +96,17 @@ public class Geografia {
 	}
 
 	public void imprimirNumeroPaisesLetra(String letra) {
+		boolean b = false;
 		Set<Entry<String, String>> pares = mapaPaises.entrySet();
 		for (Entry<String, String> par : pares) {
-			if (par.getKey().substring(0, 1).equalsIgnoreCase(letra)) {
+			if (par.getValue().substring(0, 1).equalsIgnoreCase(letra)) {
 				System.out.println(par.getValue());
-			} else {
-				System.out.println("no hay capital que comience por " + letra);
-				
+				b= true;
 			}
+		}
+		
+		if(!b) { //b==false{
+			System.out.println(" No hay ninguna capital que comience por: " + letra);
 		}
 	}
 
