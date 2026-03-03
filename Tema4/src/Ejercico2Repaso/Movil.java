@@ -2,9 +2,9 @@ package Ejercico2Repaso;
 
 public class Movil extends Telefono{
 	
-	private Integer gps;
+	private String gps;
 	
-	public Movil(Integer numeroTelefono, Integer gps) {
+	public Movil(Integer numeroTelefono, String gps) {
 		super(numeroTelefono);
 		this.gps = gps;
 
