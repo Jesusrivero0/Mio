@@ -2,6 +2,7 @@ package Ejercicio7Repaso;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,13 +41,14 @@ public class Academia {
 	}
 
 	public List<Curso> getCursoDisponibles() {
+		List<Curso> disponibles = new ArrayList<>();
 		LocalDate fecha = LocalDate.now();
 		for (Curso curso : this.listaCurso) {
 			if (curso.getNumeroPlazaOcupadas() < curso.getNumeroPlazaTotal() && curso.getFechaFin().isAfter(fecha)) {
-				this.listaCurso.add(curso);
+				disponibles.add(curso);
 			}
 		}
-		return this.listaCurso;
+		return disponibles;
 
 	}
 
@@ -70,11 +72,11 @@ public class Academia {
 
 	// duda
 	public Curso getCursoMasBarato() {
-		Curso curso = new Curso();
+		Curso curso = null;
 		for (int i = 0; i < listaCurso.size(); i++) {
 			if (listaCurso.get(i).getFechaInicio().isAfter(LocalDate.now())) {
-				if (listaCurso.get(i).getPrecio().compareTo(listaCurso.get(0).getPrecio()) < 0) {
-
+				if (curso == null || listaCurso.get(i).getPrecio().compareTo(curso.getPrecio()) < 0) {
+					curso = listaCurso.get(i);
 				}
 
 			}
