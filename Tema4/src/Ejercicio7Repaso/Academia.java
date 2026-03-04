@@ -78,9 +78,7 @@ public class Academia {
 				if (curso == null || listaCurso.get(i).getPrecio().compareTo(curso.getPrecio()) < 0) {
 					curso = listaCurso.get(i);
 				}
-
 			}
-
 		}
 		return curso;
 	}
