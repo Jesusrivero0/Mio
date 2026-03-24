@@ -1,0 +1,13 @@
+package Ejercicio03;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SacoNumero {
+
+	private List<Integer> listaNumeros;
+	
+	public SacoNumero() {
+		listaNumeros = new ArrayList<>();
+	}
+}

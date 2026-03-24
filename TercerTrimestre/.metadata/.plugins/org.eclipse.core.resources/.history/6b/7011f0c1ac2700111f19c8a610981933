@@ -1,0 +1,6 @@
+package Ejercicio03;
+
+public class SacoNumero {
+
+	private List<Integer>
+}

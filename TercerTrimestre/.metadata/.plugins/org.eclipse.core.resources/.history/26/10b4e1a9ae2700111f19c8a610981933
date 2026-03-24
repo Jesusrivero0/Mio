@@ -1,0 +1,47 @@
+package Ejercicio03;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int num = 0;
+		int pos = 0;
+		List<Integer> miLista = new ArrayList<>();
+		SacoNumero s = new SacoNumero();
+		try {
+			do {
+
+				System.out.println("Indica numeros");
+				num = scanner.nextInt();
+				if (num != -1) {
+					s.addNumero(num);
+				}
+
+			} while (num != -1);
+			System.out.println(s.getListaNumeros());
+			try {
+				do {
+					System.out.println("Indica con un numero la pocision que quieres ver");
+					pos = scanner.nextInt();
+					System.out.println(s.getListaNumeros().get(pos));
+				} while (pos != -1);
+			} catch (IndexOutOfBoundsException i) {
+				System.out.println("No existe esa pocision peruano");
+			}
+
+		} catch (InputMismatchException e) {
+			System.out.println("no puedes meter letras peruanoooo!!!!");
+		} finally {
+			scanner.close();
+		}
+
+		scanner.close();
+
+	}
+
+}

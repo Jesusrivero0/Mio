@@ -1,0 +1,5 @@
+package Ejercicio06;
+
+public class ParametroIncorrectoException extends Exception {
+
+}

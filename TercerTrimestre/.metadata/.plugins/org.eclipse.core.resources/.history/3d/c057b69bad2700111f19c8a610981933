@@ -1,0 +1,42 @@
+package Ejercicio03;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int num = 0;
+		List<Integer> miLista = new ArrayList<>();
+
+		try {
+			do {
+
+				System.out.println("Indica numeros");
+				num = scanner.nextInt();
+				if (num != -1) {
+					miLista.add(num);
+				}
+
+			} while (num != -1);
+			System.out.println(miLista);
+			
+			System.out.println("Indica con un numero la pocision que quieres ver");
+			Integer pos = scanner.nextInt();
+			System.out.println(pos);
+
+		} catch (InputMismatchException e) {
+			System.out.println("no puedes meter letras peruanoooo!!!!");
+		} finally {
+			scanner.close();
+		}
+
+		
+		scanner.close();
+
+	}
+
+}
