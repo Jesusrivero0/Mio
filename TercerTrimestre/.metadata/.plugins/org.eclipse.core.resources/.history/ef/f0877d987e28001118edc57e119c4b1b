@@ -1,0 +1,118 @@
+package Ejercicio07;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Sociedad {
+
+	private Set<Persona> conjunto;
+
+	public Sociedad() {
+		this.conjunto = new HashSet<>();
+	}
+
+	public Set<Persona> getConjunto() {
+		return conjunto;
+	}
+
+	public void setConjunto(Set<Persona> conjunto) {
+		this.conjunto = conjunto;
+	}
+
+	public void addPersona(String genero, BigDecimal altura) {
+		try {
+			Persona p = new Persona();
+			p.setAltura(altura);
+			p.setGenero(genero);
+			conjunto.add(p);
+		} catch (ParametroIncorrectoException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public BigDecimal calcularAlturaMediaHombre() throws ListaVaciaException {
+		BigDecimal total = BigDecimal.ZERO;
+		Integer cont = 0;
+		BigDecimal dividor = new BigDecimal(cont);
+		for (Persona persona : conjunto) {
+			if (persona.getGenero().equalsIgnoreCase("h")) {
+				total = total.add(persona.getAltura());
+				cont++;
+			}
+			if (cont == 0) {
+				throw new ListaVaciaException("La lista esta vacia");
+			}
+		}
+		return total.divide(dividor).setScale(2, RoundingMode.HALF_DOWN);
+
+	}
+
+	public BigDecimal calcularAlturaMediaMujer() throws ListaVaciaException {
+		BigDecimal total = BigDecimal.ZERO;
+		Integer cont = 0;
+		BigDecimal dividor = new BigDecimal(cont);
+		for (Persona persona : conjunto) {
+			if (persona.getGenero().equalsIgnoreCase("m")) {
+				total = total.add(persona.getAltura());
+				cont++;
+			}
+			if (cont == 0) {
+				throw new ListaVaciaException("La lista esta vacia");
+			}
+		}
+		return total.divide(dividor).setScale(2, RoundingMode.HALF_DOWN);
+
+	}
+
+	public BigDecimal calcularAlturaMedida(String g) throws ListaVaciaException {
+		BigDecimal total = BigDecimal.ZERO;
+		Integer cont = 0;
+		BigDecimal dividor = new BigDecimal(cont);
+		for (Persona persona : conjunto) {
+			if (persona.getGenero().equalsIgnoreCase(g)) {
+				total = total.add(persona.getAltura());
+				cont++;
+			}
+			if (cont == 0) {
+				throw new ListaVaciaException("La lista esta vacia");
+			}
+		}
+		return total.divide(dividor).setScale(2, RoundingMode.HALF_DOWN);
+
+	}
+
+	public BigDecimal calcularAlturaMedida(String g) throws ListaVaciaException {
+
+		BigDecimal total = BigDecimal.ZERO;
+		Integer cont = 0;
+		BigDecimal dividor = new BigDecimal(cont);
+		Persona persona1 = new Persona();
+		if (persona1.getGenero().equalsIgnoreCase("m") && persona1.getGenero().equalsIgnoreCase("h")) {
+			for (Persona persona : conjunto) {
+				if (persona.getGenero().equalsIgnoreCase(g)) {
+					total = total.add(persona.getAltura());
+					cont++;
+				}
+				if (cont == 0) {
+					throw new ListaVaciaException("La lista esta vacia");
+				}
+			}
+
+		} else {
+			for (Persona persona : conjunto) {
+				if (persona.getGenero().equalsIgnoreCase(g)) {
+					total = total.add(persona.getAltura());
+					cont++;
+				}
+				if (cont == 0) {
+					throw new ListaVaciaException("La lista esta vacia");
+				}
+			}
+
+		}
+		return total.divide(dividor).setScale(2, RoundingMode.HALF_DOWN);
+	}
+
+}

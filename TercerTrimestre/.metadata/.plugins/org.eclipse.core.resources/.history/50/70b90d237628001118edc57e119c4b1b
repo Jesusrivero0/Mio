@@ -1,0 +1,24 @@
+package Ejercicio07;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import Ejercicio07.Persona;
+
+public class Sociedad {
+
+	private Set<Persona> conjunto;
+
+	public Sociedad() {
+		this.conjunto = new HashSet<>();
+	}
+
+	public Set<Persona> getConjunto() {
+		return conjunto;
+	}
+
+	public void setConjunto(Set<Persona> conjunto) {
+		this.conjunto = conjunto;
+	}
+
+}

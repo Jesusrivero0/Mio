@@ -1,0 +1,20 @@
+package Ejercicio06;
+
+import java.math.BigDecimal;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		Persona p = new Persona();
+		
+		try {
+			p.setAltura(new BigDecimal(5));
+			p.setGenero("F");
+		} catch (ParametroIncorrectoException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

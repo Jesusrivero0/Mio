@@ -1,0 +1,34 @@
+package Ejercicio06;
+
+import java.math.BigDecimal;
+
+public class Persona {
+
+	private String genero;
+	private BigDecimal altura;
+ 	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) throws ParametroIncorrectoException {
+		if(genero.equalsIgnoreCase("h") || genero.equalsIgnoreCase("m")) {
+			throw new ParametroIncorrectoException();
+		}
+		this.genero = genero;
+	}
+
+	public BigDecimal getAltura() {
+		return altura;
+	}
+
+	public void setAltura(BigDecimal altura) {
+		this.altura = altura;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [genero=" + genero + ", altura=" + altura + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+}
