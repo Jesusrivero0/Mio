@@ -1,0 +1,18 @@
+package Ejercicio09;
+
+public class App {
+
+	public static void main(String[] args) {
+
+		Sociedad s = new Sociedad();
+		
+		try {
+			s.borrarGenero("h");
+		} catch (ParametroIncorrectoException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(s.getConjunto());
+	}
+
+}

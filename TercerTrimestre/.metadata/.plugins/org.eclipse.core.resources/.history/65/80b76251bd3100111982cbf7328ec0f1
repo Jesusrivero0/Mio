@@ -1,4 +1,4 @@
-package Ejercicio07;
+package Ejercicio08;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,7 +21,7 @@ public class Sociedad {
 		this.conjunto = conjunto;
 	}
 
-	public void addPersona(String genero, BigDecimal altura) throws ParametroIncorrectoException {
+	public void addPersona(String genero, BigDecimal altura) {
 		try {
 			Persona p = new Persona();
 			p.setAltura(altura);
@@ -29,7 +29,6 @@ public class Sociedad {
 			conjunto.add(p);
 		} catch (ParametroIncorrectoException e) {
 			System.out.println(e.getMessage());
-			throw new ParametroIncorrectoException("Parametro incorrecto");
 		}
 	}
 
@@ -72,8 +71,10 @@ public class Sociedad {
 		Integer cont = 0;
 		BigDecimal dividor = new BigDecimal(cont);
 		for (Persona persona : conjunto) {
+			if (persona.getGenero().equalsIgnoreCase(g)) {
 				total = total.add(persona.getAltura());
 				cont++;
+			}
 			if (cont == 0) {
 				throw new ListaVaciaException("La lista esta vacia");
 			}
@@ -109,6 +110,7 @@ public class Sociedad {
 					throw new ListaVaciaException("La lista esta vacia");
 				}
 			}
+
 		}
 		return total.divide(dividor).setScale(2, RoundingMode.HALF_DOWN);
 	}

@@ -72,8 +72,10 @@ public class Sociedad {
 		Integer cont = 0;
 		BigDecimal dividor = new BigDecimal(cont);
 		for (Persona persona : conjunto) {
+			if (persona.getGenero().equalsIgnoreCase(g)) {
 				total = total.add(persona.getAltura());
 				cont++;
+			}
 			if (cont == 0) {
 				throw new ListaVaciaException("La lista esta vacia");
 			}
