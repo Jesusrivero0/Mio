@@ -1,8 +1,8 @@
-package Ej03.Modelo;
+package Ej04.Modelo;
 
 import java.time.LocalDate;
 
-import Ej03.Service.DatosIncompletosException;
+import Ej04.Service.DatosIncompletosException;
 
 public class Persona {
 
@@ -43,9 +43,9 @@ public class Persona {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 	
-	public Boolean validar(Persona persona) throws DatosIncompletosException {
-		if (getDni().isBlank() || getNombre().isBlank() || getApellidos().isBlank() || getFecha_nacimiento() == null) {
-			throw new DatosIncompletosException();
+	public Boolean validar() throws DatosIncompletosException {
+		if (getDni().isEmpty() || getNombre().isEmpty() || getApellidos().isEmpty() || getFecha_nacimiento() == null) {
+			throw new DatosIncompletosException("Error validar");
 		}
 		return true;
 	}

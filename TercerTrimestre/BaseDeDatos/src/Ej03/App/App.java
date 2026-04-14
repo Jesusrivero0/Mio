@@ -24,12 +24,10 @@ public class App {
 		}else {				
 			System.out.println(per);
 		}
-		
 		System.out.println("Dime un nombre o apellido");
 		String nombre = scanner.nextLine();
 		
-		System.out.println(p.buscarPersonas(nombre))
-		;
+		System.out.println(p.buscarPersonas(nombre));
 		
 		
 		
