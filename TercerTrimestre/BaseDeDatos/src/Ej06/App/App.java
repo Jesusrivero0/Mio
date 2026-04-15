@@ -1,4 +1,4 @@
-package Ej05.App;
+package Ej06.App;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -146,7 +146,11 @@ public class App {
 			try {
 				p.validar();
 				try {
-					ps.actualizarPersona(p);
+					if (p.getDni().equals(dni)) {
+						ps.actualizarPersona(p);
+					} else {
+						System.out.println("El dni indicado no existe en la base de datos");
+					}
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}
@@ -172,6 +176,7 @@ public class App {
 
 			try {
 				ps.borrarPersona(p);
+
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

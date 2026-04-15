@@ -1,4 +1,4 @@
-package Ej05.Service;
+package Ej07.Service;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import Ej04.Modelo.Persona;
+import Ej07.Modelo.Persona;
 
 public class PersonaService extends OpenConnection {
 
@@ -91,14 +91,50 @@ public class PersonaService extends OpenConnection {
 	}
 
 	public void borrarPersona(Persona p) throws SQLException {
+		try (Connection conn = getNewConection()) {
+			/*
+			 * String sql = "DELETE FROM PERSONAS WHERE DNI = ?"; try (Connection conn =
+			 * getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+			 * 
+			 * stmt.setString(1, p.getDni());
+			 * 
+			 * stmt.execute(); }
+			 */
+			try {
+				insertarPersonaR(conn, p);
+			} catch (SQLException e) {
+				conn.rollback();
+				throw e;
+			}
+		}
 
-		String sql = "DELETE FROM PERSONAS WHERE DNI = ?";
-		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+	}
 
-			stmt.setString(1, p.getDni());
-
-			stmt.execute();
+	public void insertarPersonas(List<Persona> lista) throws SQLException {
+		try (Connection conn = getNewConection()) {
+			conn.setAutoCommit(false);
+			try {
+				for (Persona persona : lista) {
+					insertarPersonaR(conn, persona);
+				}
+				conn.commit();
+			} catch (SQLException e) {
+				conn.rollback();
+				throw e;
+			}
 		}
 	}
 
+	public void insertarPersonaR(Connection con, Persona p) throws SQLException {
+
+		PreparedStatement stmt = con.prepareStatement(
+				"INSERT INTO PERSONAS (DNI, NOMBRE, APELLIDOS, FECHA_NACIMIENTO) VALUES (?, ?, ?, ?)");
+
+		stmt.setString(1, p.getDni());
+		stmt.setString(2, p.getNombre());
+		stmt.setString(3, p.getApellidos());
+		stmt.setDate(4, Date.valueOf(p.getFecha_nacimiento()));
+
+		stmt.execute();
+	}
 }

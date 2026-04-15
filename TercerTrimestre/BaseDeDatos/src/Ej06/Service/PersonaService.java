@@ -1,4 +1,4 @@
-package Ej05.Service;
+package Ej06.Service;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -86,7 +86,14 @@ public class PersonaService extends OpenConnection {
 			stmt.setDate(3, Date.valueOf(p.getFecha_nacimiento()));
 			stmt.setString(4, p.getDni());
 
-			stmt.execute();
+			Integer v = stmt.executeUpdate();
+			
+			if(v >= 1) {
+				System.out.println("Se ha actualizado la persona");
+			}
+			else {
+				System.out.println("El dni indicado no existe en la base de datos");
+			}
 		}
 	}
 
@@ -97,7 +104,14 @@ public class PersonaService extends OpenConnection {
 
 			stmt.setString(1, p.getDni());
 
-			stmt.execute();
+			Integer v = stmt.executeUpdate();
+			
+			if(v >= 1) {
+				System.out.println("Se ha borrado la persona con el dni " + p.getDni());
+			}
+			else {
+				System.out.println("El dni indicado no existe en la base de datos");
+			}
 		}
 	}
 
