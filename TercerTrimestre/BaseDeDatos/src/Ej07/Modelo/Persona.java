@@ -1,6 +1,7 @@
 package Ej07.Modelo;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import Ej07.Service.DatosIncompletosException;
 
@@ -42,12 +43,25 @@ public class Persona {
 	public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-	
+
 	public Boolean validar() throws DatosIncompletosException {
 		if (getDni().isEmpty() || getNombre().isEmpty() || getApellidos().isEmpty() || getFecha_nacimiento() == null) {
 			throw new DatosIncompletosException("Error validar");
 		}
 		return true;
+	}
+
+	public Boolean mayorEdad() {
+
+		LocalDate fecha = LocalDate.now();
+		Period periodo = fecha.until(fecha_nacimiento);
+		Integer anyo = periodo.getYears();
+
+		if (anyo >= 18) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override

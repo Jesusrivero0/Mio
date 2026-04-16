@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,17 +60,13 @@ public class PersonaService extends OpenConnection {
 	}
 
 	public void insertarPersona(Persona p) {
-
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String fechaTexto = p.getFecha_nacimiento().format(formato);
-		String sql = "INSERT INTO personas VALUES ('" + p.getDni() + "', '" + p.getNombre() + "', '" + p.getApellidos()
-				+ "', TO_DATE('" + fechaTexto + "', 'DD/MM/YYYY'))";
-
-		try (Connection conn = getNewConection(); Statement stmt = conn.createStatement()) {
-
-			System.out.println(sql);
-			stmt.execute(sql);
-
+		try (Connection conn = getNewConection();) {
+			conn.setAutoCommit(false);
+			try {
+				insertarPersonaR(conn, p);
+			} catch (SQLException e) {
+				conn.rollback();
+			}
 		} catch (SQLException e) {
 			System.out.println("ERROR" + e.getMessage());
 		}
@@ -91,21 +86,17 @@ public class PersonaService extends OpenConnection {
 	}
 
 	public void borrarPersona(Persona p) throws SQLException {
-		try (Connection conn = getNewConection()) {
-			/*
-			 * String sql = "DELETE FROM PERSONAS WHERE DNI = ?"; try (Connection conn =
-			 * getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-			 * 
-			 * stmt.setString(1, p.getDni());
-			 * 
-			 * stmt.execute(); }
-			 */
-			try {
-				insertarPersonaR(conn, p);
-			} catch (SQLException e) {
-				conn.rollback();
-				throw e;
+		try {
+			String sql = "DELETE FROM PERSONAS WHERE DNI = ?";
+			try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+				stmt.setString(1, p.getDni());
+
+				stmt.execute();
 			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -137,4 +128,15 @@ public class PersonaService extends OpenConnection {
 
 		stmt.execute();
 	}
+
+	public Integer borrarPersonasA(Persona p, String dni) throws SQLException {
+
+		List<Persona> listaPersona = new ArrayList<>();
+		try (Connection conn = getNewConection()) {
+			consultarPersona(dni);
+			listaPersona.add(p);
+
+		}
+	}
+
 }
