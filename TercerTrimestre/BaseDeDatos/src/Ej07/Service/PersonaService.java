@@ -129,14 +129,38 @@ public class PersonaService extends OpenConnection {
 		stmt.execute();
 	}
 
-	public Integer borrarPersonasA(Persona p, String dni) throws SQLException {
+	public void borrarPersonaB(Persona p, Connection conn) throws SQLException {
 
-		List<Persona> listaPersona = new ArrayList<>();
-		try (Connection conn = getNewConection()) {
-			consultarPersona(dni);
-			listaPersona.add(p);
+		String sql = "DELETE FROM PERSONAS WHERE DNI = ?";
 
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setString(1, p.getDni());
+			stmt.executeUpdate();
 		}
+	}
+
+
+
+	public Integer borrarPersonasA() throws SQLException {
+
+		List<Persona> listaPersona = buscarPersonas("");
+		Integer cont = 0;
+		try (Connection conn = getNewConection()) {
+			conn.setAutoCommit(false);
+			try {
+				for (Persona persona : listaPersona) {
+					if (persona.mayorEdad()) {
+						borrarPersonaB(persona, conn);
+						cont++;
+					}
+				}
+				conn.commit();
+			} catch (SQLException e) {
+				conn.rollback();
+				throw e;
+			}
+		}
+		return cont;
 	}
 
 }
