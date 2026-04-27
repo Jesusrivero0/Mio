@@ -1,6 +1,7 @@
 package Ej01Repaso.Modelo;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class ProductoGourmet {
 
@@ -9,14 +10,13 @@ public class ProductoGourmet {
 	private String tipo;
 	private BigDecimal precio;
 	private Boolean disponible;
-	
+
 	public ProductoGourmet() {
-		
+
 	}
-	
-	
+
 	public ProductoGourmet(Integer id, String nombre, String tipo, BigDecimal precio, Boolean disponible) {
-		
+
 		this.id = id;
 		this.nombre = nombre;
 		this.tipo = tipo;
@@ -62,6 +62,17 @@ public class ProductoGourmet {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public BigDecimal suma() {
+		BigDecimal total = BigDecimal.ZERO;
+		total = total.add(getPrecio());
+		return total;
+	}
+	@Override
+	public String toString() {
+		DecimalFormat formato = new DecimalFormat("#,###.00 €");
+		return nombre + " - " + tipo + " - " + formato.format(precio);
 	}
 
 }
