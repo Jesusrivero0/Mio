@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,9 +90,7 @@ public class PersonaService extends OpenConnection {
 		try {
 			String sql = "DELETE FROM PERSONAS WHERE DNI = ?";
 			try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-
 				stmt.setString(1, p.getDni());
-
 				stmt.execute();
 			}
 
@@ -129,17 +128,15 @@ public class PersonaService extends OpenConnection {
 		stmt.execute();
 	}
 
-	public void borrarPersonaB(Persona p, Connection conn) throws SQLException {
+	public void borrarPersonaB(String dni, Connection conn) throws SQLException {
 
 		String sql = "DELETE FROM PERSONAS WHERE DNI = ?";
 
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-			stmt.setString(1, p.getDni());
+			stmt.setString(1, dni);
 			stmt.executeUpdate();
 		}
 	}
-
-
 
 	public Integer borrarPersonasA() throws SQLException {
 
@@ -150,7 +147,7 @@ public class PersonaService extends OpenConnection {
 			try {
 				for (Persona persona : listaPersona) {
 					if (persona.mayorEdad()) {
-						borrarPersonaB(persona, conn);
+						borrarPersonaB(persona.getDni(), conn);
 						cont++;
 					}
 				}
@@ -163,4 +160,19 @@ public class PersonaService extends OpenConnection {
 		return cont;
 	}
 
-}
+	public Integer borrarPersonasB() throws SQLException {
+
+		LocalDate hoy = LocalDate.now().minusYears(18);
+		String sql = "DELETE FROM PERSONAS WHERE FECHA_NACIMIENTO < ?";
+		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+				stmt.setDate(1, Date.valueOf(hoy));
+
+				Integer resgistrosActualizados = stmt.executeUpdate();
+				return resgistrosActualizados;	
+			}
+		}
+
+	}
+
+
