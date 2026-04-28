@@ -2,11 +2,11 @@ package EjercicioPreExamen.Modelo;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class Libreria {
 
@@ -17,6 +17,10 @@ public class Libreria {
 		this.nombre = nombre;
 		this.mapaLibro = new HashMap<>();
 
+	}
+
+	public Libreria() {
+		
 	}
 
 	public String getNombre() {
@@ -55,12 +59,22 @@ public class Libreria {
 	}
 
 	public List<Libro> getLibroBaratos() {
+		List<Libro> listaLibro = new ArrayList<>();
 
+		for (Libro libro : mapaLibro.values()) {
+			if (libro.getPrecio().compareTo(new BigDecimal("10.00")) < 0) {
+				listaLibro.add(libro);
+			}
+		}
+		return listaLibro;
 	}
 
 	@Override
 	public String toString() {
 		return "Libreria [nombre=" + nombre + ", mapaLibro=" + mapaLibro + "]";
 	}
+
+	
+
 
 }

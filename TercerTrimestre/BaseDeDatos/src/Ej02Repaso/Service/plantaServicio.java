@@ -7,8 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import Ej02Repaso.Modelo.Planta;
 
@@ -20,7 +19,7 @@ public class plantaServicio extends OpenConnection {
 			throw new PlantaAlturaException("La planta ha superado la altura permitida");
 		}
 
-		String sql = "INSERT INTO PLANTAS (ID, NOMBRE, TIPO, ALTURA, FECHA_PLANTACION) VALUES (?, ?, ?, ?,?)";
+		String sql = "INSERT INTO PLANTAS (ID, NOMBRE, TIPO, ALTURA, FECHA_PLANTACION) VALUES (?, ?, ?, ?, ?)";
 
 		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setInt(1, planta.getId());
@@ -95,10 +94,11 @@ public class plantaServicio extends OpenConnection {
 
 		}
 	}
-
+/*
 	public List<Planta> consultarPlatas(Integer ano){
 		
 		List<Planta> listaPlanta = new ArrayList<>();
 		
 	}
+	*/
 }

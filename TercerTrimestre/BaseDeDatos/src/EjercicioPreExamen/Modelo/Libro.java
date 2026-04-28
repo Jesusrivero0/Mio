@@ -9,6 +9,8 @@ public abstract class Libro {
 	private String isbn;
 	private BigDecimal precio;
 	
+	
+
 	public Libro(String titulo, String autor, String isbn, BigDecimal precio) {
 		
 		this.titulo = titulo;

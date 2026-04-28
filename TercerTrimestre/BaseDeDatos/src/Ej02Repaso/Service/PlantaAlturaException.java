@@ -1,3 +1,4 @@
+package Ej02Repaso.Service;
 
 public class PlantaAlturaException extends Exception {
 
