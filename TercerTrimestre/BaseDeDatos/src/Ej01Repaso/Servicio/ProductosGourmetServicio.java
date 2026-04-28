@@ -16,12 +16,26 @@ public class ProductosGourmetServicio extends OpenConnection {
 
 	public void insertarProducto(ProductoGourmet producto) throws ProductoInvalidoException, ProductoException {
 
+		if (producto.getPrecio().compareTo(BigDecimal.ZERO) <= 0) {
+			throw new ProductoInvalidoException("El precio debe ser mayor a 0");
+		}
+
+		try (Connection conn = getNewConection();) {
+			insertarProductoR(producto, conn);
+		} catch (SQLException e) {
+			throw new ProductoException("Error al insertar el producto con id =  " + producto.getId(), e);
+		}
+	}
+
+	public void insertarProductoR(ProductoGourmet producto, Connection conn)
+			throws ProductoInvalidoException, ProductoException {
+
 		String sql = "INSERT INTO PRODUCTOS_GOURMET (ID, NOMBRE, TIPO, PRECIO, DISPONIBLE) VALUES (?, ?, ?, ?,?)";
 		if (producto.getPrecio().compareTo(BigDecimal.ZERO) <= 0) {
 			throw new ProductoInvalidoException("El precio debe ser mayor a 0");
 		}
 
-		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 			stmt.setInt(1, producto.getId());
 			stmt.setString(2, producto.getNombre());
@@ -37,14 +51,11 @@ public class ProductosGourmetServicio extends OpenConnection {
 
 	public void insertarProductos(List<ProductoGourmet> listaProducto)
 			throws ProductoInvalidoException, ProductoException, SQLException {
-		String sql = "INSERT INTO PRODUCTOS_GOURMET (ID, NOMBRE, TIPO, PRECIO, DISPONIBLE) VALUES (?, ?, ?, ?,?)";
-
-		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+		try (Connection conn = getNewConection()) {
 			conn.setAutoCommit(false);
 			try {
 				for (ProductoGourmet productoGourmet : listaProducto) {
-					insertarProducto(productoGourmet);
-
+					insertarProductoR(productoGourmet, conn);
 				}
 				conn.commit();
 			} catch (SQLException e) {
@@ -52,6 +63,23 @@ public class ProductosGourmetServicio extends OpenConnection {
 				System.out.println(e.getMessage());
 				throw new ProductoException();
 			}
+		}
+
+	}
+
+	public void insertarProductosR(List<ProductoGourmet> listaProducto, Connection conn)
+			throws ProductoInvalidoException, ProductoException, SQLException {
+		String sql = "INSERT INTO PRODUCTOS_GOURMET (ID, NOMBRE, TIPO, PRECIO, DISPONIBLE) VALUES (?, ?, ?, ?,?)";
+
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			for (ProductoGourmet productoGourmet : listaProducto) {
+				insertarProducto(productoGourmet);
+			}
+			conn.commit();
+		} catch (SQLException e) {
+			conn.rollback();
+			System.out.println(e.getMessage());
+			throw new ProductoException();
 		}
 
 	}
