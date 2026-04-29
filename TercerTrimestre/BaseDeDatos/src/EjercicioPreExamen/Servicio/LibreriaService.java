@@ -19,7 +19,7 @@ public class LibreriaService extends OpenConnection {
 			stmt.setString(3, libro.getAutor());
 			stmt.setBigDecimal(4, libro.getPrecio());
 
-			stmt.executeUpdate();
+			stmt.execute();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new LibroException("Ha habido un error en la base de datos.");

@@ -22,7 +22,7 @@ public class LibroSegundaMano extends Libro {
 	}
 
 	@Override
-	public BigDecimal getPrecioLibro() {
+	public BigDecimal getPrecio() {
 		return getPrecio().divide(new BigDecimal(2));
 	}
 

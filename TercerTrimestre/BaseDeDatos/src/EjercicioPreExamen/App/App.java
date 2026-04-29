@@ -2,8 +2,10 @@ package EjercicioPreExamen.App;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -40,27 +42,31 @@ public class App {
 		Map<String, Libro> mapaLibro = new HashMap<>();
 		Libreria l = new Libreria();
 		String fin = "";
-
+		
 		l.setNombre("Paginas Desiertas");
-
 		do {
-			System.out.println("Dime el isbn");
-			String isbn = scanner.nextLine();
-			System.out.println("Dime autor");
-			String autor = scanner.nextLine();
-			System.out.println("Dime el titulo");
-			String titulo = scanner.nextLine();
-			System.out.println("Dime el precio");
-			BigDecimal precio = scanner.nextBigDecimal();
-			scanner.nextLine();
+			System.out.println("Indica los datos del libro");
+			String respuesta = scanner.nextLine();
+			String[] cadena = respuesta.split(";");
+			
+			Libro libro = new Libro();
+			
+			libro.setIsbn(cadena[0]);
+			
+			libro.setTitulo(cadena[1]);
+			
+			libro.setAutor(cadena[2]);
+			
+			libro.setPrecio(new BigDecimal(cadena[3]));
+			
 			System.out.println("Quieres continuar: (indica fin si quieres finalizar)");
 			fin = scanner.nextLine();
-			Libro l1 = new LibroSegundaMano(titulo, autor, isbn, precio);
-			mapaLibro.put(isbn, l1);
+			
+			mapaLibro.put(libro.getIsbn(), libro);
 
 		} while (!fin.equalsIgnoreCase("fin"));
 		l.setMapaLibro(mapaLibro);
-
+		
 		return l;
 	}
 
@@ -73,7 +79,6 @@ public class App {
 		
 		Map<String, Libro> mapaLibro = l.getMapaLibro();
 		Collection<Libro> valor = mapaLibro.values();
-
 		for (Libro libro : valor) {
 			try {
 				ls.insetarLibroNuevo(libro);

@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class Libreria {
 
@@ -59,10 +61,11 @@ public class Libreria {
 
 	public List<Libro> getLibroBaratos() {
 		List<Libro> listaLibro = new ArrayList<>();
-
-		for (Libro libro : mapaLibro.values()) {
-			if (libro.getPrecio().compareTo(new BigDecimal("10.00")) < 0) {
-				listaLibro.add(libro);
+		
+		Set<Entry<String, Libro>> pares = mapaLibro.entrySet();
+		for (Entry<String, Libro> libro : pares) {
+			if (libro.getValue().getPrecio().compareTo(new BigDecimal("10.00")) < 0) {
+				listaLibro.add(libro.getValue());
 			}
 		}
 		return listaLibro;

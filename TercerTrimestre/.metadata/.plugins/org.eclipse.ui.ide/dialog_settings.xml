@@ -13,6 +13,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\jrodriguez1619\Desktop\Primer trimestre\PrimerTrimestre\Mio\TercerTrimestre\BaseDeDatos\src\EjercicioPreExamen"/>
 			<item value="C:\Users\jrodriguez1619\Desktop\Primer trimestre\PrimerTrimestre\Mio\TercerTrimestre\BaseDeDatos\src\Ej01Repaso\App"/>
 			<item value="C:\Users\jrodriguez1619\Desktop\Primer trimestre\PrimerTrimestre\Mio\TercerTrimestre\BaseDeDatos\src\Ej01Repaso"/>
 		</list>

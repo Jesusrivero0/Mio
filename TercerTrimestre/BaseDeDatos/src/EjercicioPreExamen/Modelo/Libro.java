@@ -2,7 +2,7 @@ package EjercicioPreExamen.Modelo;
 
 import java.math.BigDecimal;
 
-public abstract class Libro {
+public class Libro {
 
 	private String titulo;
 	private String autor;
@@ -17,6 +17,10 @@ public abstract class Libro {
 		this.autor = autor;
 		this.isbn = isbn;
 		this.precio = precio;
+	}
+
+	public Libro() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getTitulo() {
@@ -51,7 +55,7 @@ public abstract class Libro {
 		this.precio = precio;
 	}
 	
-	public abstract BigDecimal getPrecioLibro(); 
+	 
 
 	@Override
 	public String toString() {
