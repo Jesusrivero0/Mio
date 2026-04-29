@@ -20,7 +20,7 @@ public class Libreria {
 	}
 
 	public Libreria() {
-		
+
 	}
 
 	public String getNombre() {
@@ -54,7 +54,6 @@ public class Libreria {
 		for (Libro libro : valor) {
 			total = total.add(libro.getPrecio());
 		}
-
 		return total.divide(new BigDecimal(mapaLibro.size()), 2, RoundingMode.HALF_DOWN);
 	}
 
@@ -73,8 +72,5 @@ public class Libreria {
 	public String toString() {
 		return "Libreria [nombre=" + nombre + ", mapaLibro=" + mapaLibro + "]";
 	}
-
-	
-
 
 }

@@ -7,13 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import Ej02Repaso.Modelo.Planta;
 
 public class plantaServicio extends OpenConnection {
 
-	public void insertarPlanta(Planta planta) throws SQLException, PlantaAlturaException {
+	public void insertarPlanta(Planta planta) throws PlantaAlturaException {
 
 		if (planta.getAltura().compareTo(BigDecimal.TWO) > 0) {
 			throw new PlantaAlturaException("La planta ha superado la altura permitida");
@@ -29,7 +30,8 @@ public class plantaServicio extends OpenConnection {
 			stmt.setDate(5, Date.valueOf(LocalDate.now()));
 
 			stmt.execute();
-
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -94,11 +96,19 @@ public class plantaServicio extends OpenConnection {
 
 		}
 	}
-/*
-	public List<Planta> consultarPlatas(Integer ano){
-		
+
+	// ver
+	public List<Planta> consultarPlatas(Integer ano) throws SQLException {
+
 		List<Planta> listaPlanta = new ArrayList<>();
-		
+		String sql = "SELECT * FROM PLANTAS WHERE FECHA_PLANTACION = ?";
+
+		try (Connection conn = getNewConection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+			Planta p = new Planta();
+			stmt.setDate(1, Date.valueOf(p.getFecha_plantacion()));
+			listaPlanta.add(p);
+			return listaPlanta;
+		}
 	}
-	*/
+
 }
