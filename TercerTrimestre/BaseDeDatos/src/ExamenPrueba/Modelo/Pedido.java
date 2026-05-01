@@ -99,7 +99,7 @@ public abstract class Pedido {
 	public String toString() {
 		DecimalFormat formato = new DecimalFormat("#,###.00 €");
 		DateTimeFormatter formatofecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Numero >" + numero + " fecha > " + formatofecha.format(fecha_pedido) + " > " + formato.format(importe)
+		return "Numero > " + numero + " fecha > " + formatofecha.format(fecha_pedido) + " > " + formato.format(importe)
 				+ " > (" + cant_articulo + " articulos)";
 	}
 

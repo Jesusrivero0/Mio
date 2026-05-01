@@ -2,16 +2,13 @@ package EjercicioPreExamen.App;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import EjercicioPreExamen.Modelo.Libreria;
 import EjercicioPreExamen.Modelo.Libro;
-import EjercicioPreExamen.Modelo.LibroSegundaMano;
 import EjercicioPreExamen.Servicio.LibreriaService;
 import EjercicioPreExamen.Servicio.LibroException;
 

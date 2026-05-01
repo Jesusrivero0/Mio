@@ -109,6 +109,7 @@ public class App {
 
 			
 		} while (error);
+		sc.close();
 	}
 
 }

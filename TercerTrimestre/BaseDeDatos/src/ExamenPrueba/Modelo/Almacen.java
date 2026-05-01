@@ -1,12 +1,10 @@
 package ExamenPrueba.Modelo;
 
-import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+
 import java.util.Map;
-import java.util.Set;
+
 
 public class Almacen {
 
@@ -35,18 +33,23 @@ public class Almacen {
 	}
 
 	public Integer getCantidadPedidos() {
-		BigDecimal total = BigDecimal.ZERO;
-		Cliente c = new Cliente();
-		List<Pedido> la = c.getListaProducto();
+		int total = 0;
 
-		for (Pedido pedido : la) {
-			total = total.add(pedido.getImporte());
+		for (Cliente c : mapaAlmacen.values()) {
+			total = total + c.getListaProducto().size();
 		}
-		Integer total1 = total.intValue();
-		return total1;
+
+		return total;
 	}
 
 	public void borrarClientesServidos() {
+		Iterator<Cliente> iterador = mapaAlmacen.values().iterator();
 
+		while (iterador.hasNext()) {
+			Cliente c = iterador.next();
+			if (!c.tienePedidosPendiente()) {
+				iterador.remove();
+			}
+		}
 	}
 }

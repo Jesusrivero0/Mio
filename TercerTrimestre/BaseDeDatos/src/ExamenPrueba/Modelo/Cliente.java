@@ -1,6 +1,8 @@
 package ExamenPrueba.Modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,13 +68,25 @@ public class Cliente {
 	}
 
 	public Pedido getPedidoCritico() throws NoExisteException {
-		for (Pedido pedido : listaProducto) {
-			if (!pedido.getEntregado() && pedido.getFechaEntregaPrevista().isAfter(pedido.getFecha_pedido())) {
-				return pedido;
-			} else {
-				throw new NoExisteException("Ese pedido no existe");
+
+		Pedido pedidoCritico = null;
+		int mayorRetraso = 0;
+		LocalDate hoy = LocalDate.now();
+
+		for (Pedido p : listaProducto) {
+			if (!p.getEntregado() && p.getFechaEntregaPrevista().isBefore(hoy)) {
+				Period periodo = p.getFechaEntregaPrevista().until(hoy);
+				int retraso = periodo.getDays();
+				if (retraso > mayorRetraso) {
+					mayorRetraso = retraso;
+					pedidoCritico = p;
+				}
 			}
 		}
-		return null;
+
+		if (pedidoCritico == null) {
+			throw new NoExisteException("No hay pedidos con retraso");
+		}
+		return pedidoCritico;
 	}
 }
